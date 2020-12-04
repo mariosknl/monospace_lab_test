@@ -19,8 +19,7 @@ const UserDataContainer = () => {
       dispatch(updateUser());
     }
   }, [dispatch, status, updateStatus]);
-  console.log(updateStatus);
-  // if (status === "loading" || status === "idle") return <p>loading...</p>;
+  if (status === "loading" || status === "idle") return <p>loading...</p>;
   return (
     <div>
       <UsersData />

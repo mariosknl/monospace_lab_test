@@ -10,10 +10,17 @@ const TableData = () => {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.users.users);
 
-  console.log(users);
+  const [state, setState] = useState(new Array(users.length).fill(false));
 
   const handleChange = (user, active) => {
     dispatch(updateUserStatus({ user, active }));
+  };
+
+  const handleCheckbox = (e) => {
+    const id = e.target.id;
+    const tempArr = [...state];
+    tempArr[id] = !tempArr[id];
+    setState(tempArr);
   };
 
   return (
@@ -38,12 +45,17 @@ const TableData = () => {
           </tr>
         </thead>
         <tbody>
-          {users.map((user) => {
+          {users.map((user, index) => {
             const { id, name, email, phone, type, active } = user;
             return (
               <tr key={user.id}>
                 <td>
-                  <input type="checkbox" />
+                  <input
+                    id={index}
+                    type="checkbox"
+                    onChange={handleCheckbox}
+                    checked={state[index]}
+                  />
                 </td>
                 <td>{roleType(type)}</td>
                 <td>{name}</td>
