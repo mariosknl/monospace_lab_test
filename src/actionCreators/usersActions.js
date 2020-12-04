@@ -10,7 +10,7 @@ export const fetchUsers = createAsyncThunk("table/data", async () => {
   return response.data;
 });
 
-export const updateUserStatus = createAsyncThunk("", async (args) => {
+export const updateUserStatus = createAsyncThunk("", async (args, thunkApi) => {
   const { user, active } = args;
   const options = {
     data: { active: !active },

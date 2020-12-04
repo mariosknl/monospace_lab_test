@@ -13,7 +13,6 @@ const TableData = () => {
   console.log(users);
 
   const handleChange = (user, active) => {
-    console.log("click");
     dispatch(updateUserStatus({ user, active }));
   };
 
@@ -43,7 +42,9 @@ const TableData = () => {
             const { id, name, email, phone, type, active } = user;
             return (
               <tr key={user.id}>
-                <td></td>
+                <td>
+                  <input type="checkbox" />
+                </td>
                 <td>{roleType(type)}</td>
                 <td>{name}</td>
                 <td>{email}</td>
