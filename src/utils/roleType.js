@@ -15,4 +15,4 @@ const roleType = (type) => {
   }
 };
 
-export default roleType();
+export default roleType;

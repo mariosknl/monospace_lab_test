@@ -1,26 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import fetchTableData from "../actionCreators/usersActions";
+import { fetchUsers } from "../actionCreators/usersActions";
 
-const tableDataSlice = createSlice({
+const fetchUsersSlice = createSlice({
   name: "users",
   initialState: {
     users: [],
+    status: "idle",
   },
   reducers: {},
   extraReducers: {
-    [fetchTableData.pending]: (state) => {
+    [fetchUsers.pending]: (state) => {
       state.status = "loading";
     },
-    [fetchTableData.fulfilled]: (state, action) => {
+    [fetchUsers.fulfilled]: (state, action) => {
       state.status = "succeeded";
-      state.users = [action.payload];
+      state.users = action.payload;
     },
-    [fetchTableData.rejected]: (state, action) => {
+    [fetchUsers.rejected]: (state, action) => {
       state.status = "failed";
       state.error = action.error.message;
     },
   },
 });
 
-export default tableDataSlice.reducer;
+export default fetchUsersSlice.reducer;

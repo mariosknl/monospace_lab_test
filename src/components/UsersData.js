@@ -1,12 +1,21 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Table } from "react-bootstrap";
+import roleType from "../utils/roleType";
+import SwitchButton from "./SwitchButton";
+import { updateUserStatus } from "../actionCreators/usersActions";
 
 const TableData = () => {
+  const dispatch = useDispatch();
   const users = useSelector((state) => state.users.users);
 
   console.log(users);
+
+  const handleChange = (user, active) => {
+    console.log("click");
+    dispatch(updateUserStatus({ user, active }));
+  };
 
   return (
     <>
@@ -30,16 +39,26 @@ const TableData = () => {
           </tr>
         </thead>
         <tbody>
-          {users.map((user) => (
-            <tr key={user.id}>
-              <td></td>
-              <td>{user.type}</td>
-              <td>{user.name}</td>
-              <td>{user.email}</td>
-              <td>{user.phone}</td>
-              <td>{user.status}</td>
-            </tr>
-          ))}
+          {users.map((user) => {
+            const { id, name, email, phone, type, active } = user;
+            return (
+              <tr key={user.id}>
+                <td></td>
+                <td>{roleType(type)}</td>
+                <td>{name}</td>
+                <td>{email}</td>
+                <td>{phone}</td>
+                <td>
+                  <SwitchButton
+                    checked={active}
+                    id={id}
+                    user={user}
+                    handleChange={handleChange}
+                  />
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </Table>
     </>

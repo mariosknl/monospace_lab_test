@@ -1,22 +1,15 @@
 import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
-import fetchTableData from "./actionCreators/usersActions";
-import UsersData from "./components/UsersData";
+import fetchUsers from "./actionCreators/usersActions";
+import UserDataContainer from "./components/UserDataContainer";
 
 function App() {
   const dispatch = useDispatch();
-  const users = useSelector((state) => state.users);
-
-  const { usersData } = users;
-
-  useEffect(() => {
-    dispatch(fetchTableData());
-  }, [dispatch]);
 
   return (
     <div>
-      <UsersData users={usersData} />
+      <UserDataContainer />
     </div>
   );
 }
