@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import fetchTableData from "../actionCreators/tableDataActions";
+import fetchTableData from "../actionCreators/usersActions";
 
 const tableDataSlice = createSlice({
-  name: "tableData",
+  name: "users",
   initialState: {
-    tableData: [],
+    users: [],
   },
   reducers: {},
   extraReducers: {
@@ -14,7 +14,7 @@ const tableDataSlice = createSlice({
     },
     [fetchTableData.fulfilled]: (state, action) => {
       state.status = "succeeded";
-      state.tableData = [action.payload];
+      state.users = [action.payload];
     },
     [fetchTableData.rejected]: (state, action) => {
       state.status = "failed";

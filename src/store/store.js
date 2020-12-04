@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-import tableDataReducer from "../reducers/tableDataSlice";
+import usersReducer from "../reducers/usersSlice";
 
 export default configureStore({
   reducer: {
-    tableData: tableDataReducer,
+    users: usersReducer,
   },
 });
