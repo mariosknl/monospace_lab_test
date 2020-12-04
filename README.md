@@ -2,6 +2,11 @@
 
 I created this project using React/Redux. I retrieve the data from an API. I'm using React Bootstrap package for displaying the table and its content. I am using another endpoint for changing the status of the user.
 
+### Screenshot
+
+- Homepage
+  ![HomePage](src/assets/homepage.png)
+
 ### BUILD WITH
 
 - ReactJS
